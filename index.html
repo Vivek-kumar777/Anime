@@ -13,13 +13,13 @@
     <meta name="theme-color" content="#1a1a2e">
     <meta property="og:title" content="AniVibe - Discover Popular Anime Series">
     <meta property="og:description"
-        content="Explore 19+ popular anime series including action, romance, comedy, and more. Find your next favorite anime.">
+        content="Explore most popular anime series including action, romance, comedy, and more. Find your next favorite anime.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="AniVibe">
     <meta property="og:url" content="https://yourwebsite.com/">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AniVibe - Popular Anime Collection">
-    <meta name="twitter:description" content="Discover top anime series from action to romance. 19+ titles available.">
+    <meta name="twitter:description" content="Discover top anime series from action to romance. most titles available.">
     <link rel="shortcut icon" href="https://i.pinimg.com/1200x/79/cc/ff/79ccfff84cb6a5743cbff77ee410c9b2.jpg"
         type="image.png">
     <link rel="canonical" href="https://yourwebsite.com/">
@@ -27,15 +27,52 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://i.pinimg.com">
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="preload" href="style.css" as="style">
     <link rel="stylesheet" href="style.css">
+    <link rel="preload" as="image" href="https://i.pinimg.com/1200x/9f/6b/0a/9f6b0ae86effaaf14b0c80cefb7ce061.jpg">
+    <link rel="preload" as="image" href="https://i.pinimg.com/1200x/4a/9e/f1/4a9ef199b8126894fae22005b6689416.jpg">
+    <script type="text/javascript">
+        window.addEventListener('load', function() {
+            if ('loading' in HTMLImageElement.prototype) {
+                const images = document.querySelectorAll('img[loading="lazy"]');
+                images.forEach(img => {
+                    img.setAttribute('decoding', 'async');
+                });
+            }
+        });
+    </script>
+    <style>
+        /* Critical CSS */
+        .logo img { max-width: 100%; height: auto; }
+        @media (max-width: 767px) {
+            .anime-card { width: 100%; max-width: 300px; margin: 1rem auto; }
+            .img-container img { width: 100%; height: auto; }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "AniVibe",
+      "description": "Discover top anime series including Naruto, Demon Slayer, Attack on Titan, Jujutsu Kaisen, and more.",
+      "url": "https://yourwebsite.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://yourwebsite.com/?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 </head>
 
 <body>
     <header role="banner">
         <div class="logo">
             <img src="https://i.pinimg.com/1200x/9f/6b/0a/9f6b0ae86effaaf14b0c80cefb7ce061.jpg"
-                alt="AniVibe Logo - Anime Collection Website" width="50" height="50">
+                alt="AniVibe Logo - Anime Collection Website" 
+                width="50" height="50"
+                fetchpriority="high">
             <span class="logo-text">AniVibe</span>
         </div>
         <div class="search-container" role="search">
@@ -59,11 +96,18 @@
             <div class="no-results-hint">Try searching for another anime from our collection</div>
         </div>
         <section class="Anime image" aria-label="Anime Collection">
-            <h1 class="visually-hidden">Popular Anime Collection - 19+ Titles</h1>
+            <h1 class="visually-hidden">Popular Anime Collection - most Titles</h1>
             <div class="anime-card">
                 <div class="img-container">
                     <img src="https://i.pinimg.com/1200x/4a/9e/f1/4a9ef199b8126894fae22005b6689416.jpg"
-                        alt="Naruto Anime Poster - Action Adventure Series" loading="lazy" width="200" height="300">
+                        alt="Naruto Anime Poster - Action Adventure Series" 
+                        fetchpriority="high"
+                        width="200" 
+                        height="300"
+                        decoding="async"
+                        srcset="https://i.pinimg.com/236x/4a/9e/f1/4a9ef199b8126894fae22005b6689416.jpg 236w,
+                                https://i.pinimg.com/1200x/4a/9e/f1/4a9ef199b8126894fae22005b6689416.jpg 1200w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- NARUTO</p>
                 <p class="anime-type">Type:- ACTION, ADVENTURE</p>
@@ -71,7 +115,14 @@
             <div class="anime-card">
                 <div class="img-container">
                     <img src="https://i.pinimg.com/736x/23/ce/c3/23cec31c918eee058ab6543a926b9227.jpg"
-                        alt="Demon Slayer Anime Poster - Action Fantasy Series" loading="lazy" width="200" height="300">
+                        alt="Demon Slayer Anime Poster - Action Fantasy Series" 
+                        loading="lazy" 
+                        decoding="async"
+                        width="200" 
+                        height="300"
+                        srcset="https://i.pinimg.com/236x/23/ce/c3/23cec31c918eee058ab6543a926b9227.jpg 236w,
+                                https://i.pinimg.com/736x/23/ce/c3/23cec31c918eee058ab6543a926b9227.jpg 736w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- DEMON SLAYER</p>
                 <p class="anime-type">Type:- ACTION, FANTASY</p>
@@ -80,7 +131,11 @@
                 <div class="img-container">
                     <img src="https://i.pinimg.com/1200x/40/36/cb/4036cb7e415e26108d752abcac6c4a28.jpg"
                         alt="Attack on Titan Anime Poster - Dark Fantasy Series" loading="lazy" width="200"
-                        height="300">
+                        height="300"
+                        decoding="async"
+                        srcset="https://i.pinimg.com/236x/40/36/cb/4036cb7e415e26108d752abcac6c4a28.jpg 236w,
+                                https://i.pinimg.com/1200x/40/36/cb/4036cb7e415e26108d752abcac6c4a28.jpg 1200w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- ATTACK ON TITAN</p>
                 <p class="anime-type">Type:- ACTION, DARK FANTASY</p>
@@ -88,7 +143,11 @@
             <div class="anime-card">
                 <div class="img-container">
                     <img src="https://i.pinimg.com/1200x/b6/28/a0/b628a0052a0688ae9ba99e2f12e8f1ef.jpg"
-                        alt="Jujutsu Kaisen" loading="lazy">
+                        alt="Jujutsu Kaisen Anime Poster - Supernatural Action Series" loading="lazy" width="200" height="300"
+                        decoding="async"
+                        srcset="https://i.pinimg.com/236x/b6/28/a0/b628a0052a0688ae9ba99e2f12e8f1ef.jpg 236w,
+                                https://i.pinimg.com/1200x/b6/28/a0/b628a0052a0688ae9ba99e2f12e8f1ef.jpg 1200w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- JUJUTSU KAISEN</p>
                 <p class="anime-type">Type:- ACTION, SUPERNATURAL</p>
@@ -96,7 +155,11 @@
             <div class="anime-card">
                 <div class="img-container">
                     <img src="https://i.pinimg.com/736x/95/04/2a/95042aaa5a9511bbecbc7f3177cbfd40.jpg"
-                        alt="Solo Leveling" loading="lazy">
+                        alt="Solo Leveling Anime Poster - Action Fantasy Manhwa Adaptation" loading="lazy" width="200" height="300"
+                        decoding="async"
+                        srcset="https://i.pinimg.com/236x/95/04/2a/95042aaa5a9511bbecbc7f3177cbfd40.jpg 236w,
+                                https://i.pinimg.com/736x/95/04/2a/95042aaa5a9511bbecbc7f3177cbfd40.jpg 736w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- SOLO LEVELING</p>
                 <p class="anime-type">Type:- ACTION, FANTASY</p>
@@ -104,7 +167,10 @@
             <div class="anime-card">
                 <div class="img-container">
                     <img src="https://i.pinimg.com/1200x/5c/ce/9e/5cce9e0ad9e97fc89d76af75889d4751.jpg"
-                        alt="Dragon Ball Z" loading="lazy">
+                        alt="Dragon Ball Z" loading="lazy" decoding="async"
+                        srcset="https://i.pinimg.com/236x/5c/ce/9e/5cce9e0ad9e97fc89d76af75889d4751.jpg 236w,
+                                https://i.pinimg.com/1200x/5c/ce/9e/5cce9e0ad9e97fc89d76af75889d4751.jpg 1200w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- DRAGON BALL Z</p>
                 <p class="anime-type">Type:- ACTION, ADVENTURE</p>
@@ -112,7 +178,10 @@
             <div class="anime-card">
                 <div class="img-container">
                     <img src="https://i.pinimg.com/1200x/c6/67/6f/c6676f2cb071a4435c7f49bb50414f62.jpg" alt="Pokemon"
-                        loading="lazy">
+                        loading="lazy" decoding="async"
+                        srcset="https://i.pinimg.com/236x/c6/67/6f/c6676f2cb071a4435c7f49bb50414f62.jpg 236w,
+                                https://i.pinimg.com/1200x/c6/67/6f/c6676f2cb071a4435c7f49bb50414f62.jpg 1200w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- POKEMON</p>
                 <p class="anime-type">Type:- ADVENTURE, FANTASY</p>
@@ -120,7 +189,10 @@
             <div class="anime-card">
                 <div class="img-container">
                     <img src="https://i.pinimg.com/736x/a3/61/df/a361df3f0c77998cc99b48f36fb470eb.jpg" alt="Doraemon"
-                        loading="lazy">
+                        loading="lazy" decoding="async"
+                        srcset="https://i.pinimg.com/236x/a3/61/df/a361df3f0c77998cc99b48f36fb470eb.jpg 236w,
+                                https://i.pinimg.com/736x/a3/61/df/a361df3f0c77998cc99b48f36fb470eb.jpg 736w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- DORAEMON</p>
                 <p class="anime-type">Type:- COMEDY, SCI-FI</p>
@@ -128,7 +200,10 @@
             <div class="anime-card">
                 <div class="img-container">
                     <img src="https://i.pinimg.com/736x/28/14/30/281430a6a80fb0c1a9cf31998056e393.jpg"
-                        alt="Classroom of the Elite" loading="lazy">
+                        alt="Classroom of the Elite" loading="lazy" decoding="async"
+                        srcset="https://i.pinimg.com/236x/28/14/30/281430a6a80fb0c1a9cf31998056e393.jpg 236w,
+                                https://i.pinimg.com/736x/28/14/30/281430a6a80fb0c1a9cf31998056e393.jpg 736w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- CLASSROOM OF THE ELITE</p>
                 <p class="anime-type">Type:- PSYCHOLOGICAL, DRAMA</p>
@@ -136,7 +211,10 @@
             <div class="anime-card">
                 <div class="img-container">
                     <img src="https://i.pinimg.com/736x/86/7b/bd/867bbd49ad58c4ce0eb64f8c97743f47.jpg"
-                        alt="Alya Sometimes Hides Her Feelings in Russian" loading="lazy">
+                        alt="Alya Sometimes Hides Her Feelings in Russian" loading="lazy" decoding="async"
+                        srcset="https://i.pinimg.com/236x/86/7b/bd/867bbd49ad58c4ce0eb64f8c97743f47.jpg 236w,
+                                https://i.pinimg.com/736x/86/7b/bd/867bbd49ad58c4ce0eb64f8c97743f47.jpg 736w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- ALYA SOMETIMES HIDES HER FEELINGS IN RUSSIAN</p>
                 <p class="anime-type">Type:- ROMANCE, COMEDY</p>
@@ -144,31 +222,55 @@
             <div class="anime-card">
                 <div class="img-container">
                     <img src="https://i.pinimg.com/1200x/a7/9a/42/a79a42f0969be27def5989508dba61e7.jpg"
-                        alt="I'm Getting Married to a Girl I Hate in My Class" loading="lazy">
+                        alt="I'm Getting Married to a Girl I Hate in My Class" loading="lazy" decoding="async"
+                        srcset="https://i.pinimg.com/236x/a7/9a/42/a79a42f0969be27def5989508dba61e7.jpg 236w,
+                                https://i.pinimg.com/1200x/a7/9a/42/a79a42f0969be27def5989508dba61e7.jpg 1200w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- I'M GETTING MARRIED TO A GIRL I HATE IN MY CLASS</p>
                 <p class="anime-type">Type:- ROMANCE, COMEDY</p>
             </div>
-            <div class="anime-card">
+            <a href="video/THE ANGEL NEXT DOOR SPOILS ME ROTTEN.html" class="anime-card">
                 <div class="img-container">
                     <img src="https://i.pinimg.com/1200x/8d/d7/a7/8dd7a765424c85bf5f480ac8591d2005.jpg"
-                        alt="The Angel Next Door Spoils Me Rotten" loading="lazy">
+                        alt="The Angel Next Door Spoils Me Rotten" 
+                        loading="lazy"
+                        width="200"
+                        height="300"
+                        decoding="async"
+                        srcset="https://i.pinimg.com/236x/8d/d7/a7/8dd7a765424c85bf5f480ac8591d2005.jpg 236w,
+                                https://i.pinimg.com/1200x/8d/d7/a7/8dd7a765424c85bf5f480ac8591d2005.jpg 1200w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- THE ANGEL NEXT DOOR SPOILS ME ROTTEN</p>
                 <p class="anime-type">Type:- ROMANCE, SLICE OF LIFE</p>
-            </div>
-            <div class="anime-card">
+            </a>
+            <a href="video/MORE THAN A MARRIED COUPLE BUT NOT LOVERS.html" class="anime-card">
                 <div class="img-container">
                     <img src="https://i.pinimg.com/1200x/17/47/b3/1747b337ab9253e2e2a88ec4188cf9b0.jpg"
-                        alt="More Than a Married Couple But Not Lovers" loading="lazy">
+                        alt="More Than a Married Couple But Not Lovers" 
+                        loading="lazy"
+                        width="200"
+                        height="300"
+                        decoding="async"
+                        srcset="https://i.pinimg.com/236x/17/47/b3/1747b337ab9253e2e2a88ec4188cf9b0.jpg 236w,
+                                https://i.pinimg.com/1200x/17/47/b3/1747b337ab9253e2e2a88ec4188cf9b0.jpg 1200w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- MORE THAN A MARRIED COUPLE BUT NOT LOVERS</p>
                 <p class="anime-type">Type:- ROMANCE, COMEDY</p>
-            </div>
+            </a>
             <div class="anime-card">
                 <div class="img-container">
                     <img src="https://i.pinimg.com/736x/a9/58/99/a958999f491aa637d94f467f35b66099.jpg"
-                        alt="The Shiunji Family Children" loading="lazy">
+                        alt="The Shiunji Family Children" 
+                        loading="lazy"
+                        width="200"
+                        height="300"
+                        decoding="async"
+                        srcset="https://i.pinimg.com/236x/a9/58/99/a958999f491aa637d94f467f35b66099.jpg 236w,
+                                https://i.pinimg.com/736x/a9/58/99/a958999f491aa637d94f467f35b66099.jpg 736w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- THE SHIUNJI FAMILY CHILDREN</p>
                 <p class="anime-type">Type:- ROMANCE, DRAMA</p>
@@ -176,7 +278,14 @@
             <div class="anime-card">
                 <div class="img-container">
                     <img src="https://i.pinimg.com/736x/3c/a5/c3/3ca5c3572d39e221621e659888c17a2b.jpg"
-                        alt="Rent-a-Girlfriend" loading="lazy">
+                        alt="Rent-a-Girlfriend" 
+                        loading="lazy"
+                        width="200"
+                        height="300"
+                        decoding="async"
+                        srcset="https://i.pinimg.com/236x/3c/a5/c3/3ca5c3572d39e221621e659888c17a2b.jpg 236w,
+                                https://i.pinimg.com/736x/3c/a5/c3/3ca5c3572d39e221621e659888c17a2b.jpg 736w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- RENT-A-GIRLFRIEND</p>
                 <p class="anime-type">Type:- ROMANCE, COMEDY</p>
@@ -184,7 +293,14 @@
             <div class="anime-card">
                 <div class="img-container">
                     <img src="https://i.pinimg.com/736x/8d/de/7e/8dde7e7649cdc071060fb05a997f2841.jpg"
-                        alt="A Couple of Cuckoos" loading="lazy">
+                        alt="A Couple of Cuckoos" 
+                        loading="lazy"
+                        width="200"
+                        height="300"
+                        decoding="async"
+                        srcset="https://i.pinimg.com/236x/8d/de/7e/8dde7e7649cdc071060fb05a997f2841.jpg 236w,
+                                https://i.pinimg.com/736x/8d/de/7e/8dde7e7649cdc071060fb05a997f2841.jpg 736w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- A COUPLE OF CUCKOOS</p>
                 <p class="anime-type">Type:- ROMANCE, COMEDY</p>
@@ -192,7 +308,14 @@
             <div class="anime-card">
                 <div class="img-container">
                     <img src="https://i.pinimg.com/736x/e8/d6/64/e8d6649cbd4531b159161a126a6121ee.jpg"
-                        alt="My Dress-Up Darling" loading="lazy">
+                        alt="My Dress-Up Darling" 
+                        loading="lazy"
+                        width="200"
+                        height="300"
+                        decoding="async"
+                        srcset="https://i.pinimg.com/236x/e8/d6/64/e8d6649cbd4531b159161a126a6121ee.jpg 236w,
+                                https://i.pinimg.com/736x/e8/d6/64/e8d6649cbd4531b159161a126a6121ee.jpg 736w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- MY DRESS-UP DARLING</p>
                 <p class="anime-type">Type:- ROMANCE, SLICE OF LIFE</p>
@@ -200,22 +323,58 @@
             <div class="anime-card">
                 <div class="img-container">
                     <img src="https://i.pinimg.com/736x/7f/b5/14/7fb5149ef359681cb381c57ac852a7a9.jpg"
-                        alt="The Apothecary Diaries" loading="lazy">
+                        alt="The Apothecary Diaries" 
+                        loading="lazy"
+                        width="200"
+                        height="300"
+                        decoding="async"
+                        srcset="https://i.pinimg.com/236x/7f/b5/14/7fb5149ef359681cb381c57ac852a7a9.jpg 236w,
+                                https://i.pinimg.com/736x/7f/b5/14/7fb5149ef359681cb381c57ac852a7a9.jpg 736w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- THE APOTHECARY DIARIES</p>
                 <p class="anime-type">Type:- MYSTERY, HISTORICAL</p>
             </div>
             <div class="anime-card">
                 <div class="img-container">
-                    <img src="http://i.pinimg.com/736x/39/6a/63/396a6388d707eda40d6aafbbe9072e83.jpg"
-                        alt="The Detective Is Already Dead" loading="lazy">
+                    <img src="https://i.pinimg.com/736x/39/6a/63/396a6388d707eda40d6aafbbe9072e83.jpg"
+                        alt="The Detective Is Already Dead" 
+                        loading="lazy"
+                        width="200"
+                        height="300"
+                        decoding="async"
+                        srcset="https://i.pinimg.com/236x/39/6a/63/396a6388d707eda40d6aafbbe9072e83.jpg 236w,
+                                https://i.pinimg.com/736x/39/6a/63/396a6388d707eda40d6aafbbe9072e83.jpg 736w"
+                        sizes="(max-width: 767px) 236px, 200px">
                 </div>
                 <p class="anime-name">Anime:- THE DETECTIVE IS ALREADY DEAD</p>
                 <p class="anime-type">Type:- MYSTERY, ROMANCE</p>
             </div>
         </section>
     </main>
-    <script src="script.js"></script>
+    <script src="script.min.js" async></script>
+    <script>
+        // Enable back/forward cache restoration
+        document.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                // Page was restored from back/forward cache
+                window.location.reload();
+            }
+        });
+        
+        // Save scroll position before unload
+        window.addEventListener('pagehide', function() {
+            sessionStorage.setItem('scrollPos', window.scrollY);
+        });
+        
+        // Restore scroll position
+        window.addEventListener('load', function() {
+            if (sessionStorage.getItem('scrollPos') !== null) {
+                window.scrollTo(0, parseInt(sessionStorage.getItem('scrollPos')));
+                sessionStorage.removeItem('scrollPos');
+            }
+        });
+    </script>
 </body>
 
 </html>
