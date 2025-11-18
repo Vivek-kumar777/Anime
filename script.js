@@ -105,17 +105,21 @@ document.querySelectorAll('nav a').forEach(link => {
         e.preventDefault();
         const targetId = href.substring(1);
 
+        // Disable smooth scrolling on low-end devices
+        const isLowEndDevice = navigator.deviceMemory && navigator.deviceMemory <= 2;
+        const scrollBehavior = isLowEndDevice ? 'auto' : 'smooth';
+
         if (targetId === 'home') {
             searchInput.value = '';
             document.querySelectorAll('#Anime .anime-card').forEach(card => card.style.display = '');
             noResults.classList.remove('show');
             suggestionsBox.classList.remove('show');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: scrollBehavior });
             showTab('Anime');
         } else {
             const targetElement = document.getElementById(targetId);
             if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
+                targetElement.scrollIntoView({ behavior: scrollBehavior });
             }
             showTab(targetId);
         }
@@ -147,6 +151,17 @@ searchInput.addEventListener('input', (e) => {
         return;
     }
 
+    // Debounce search for low-end devices
+    const isLowEndDevice = navigator.deviceMemory && navigator.deviceMemory <= 2;
+    if (isLowEndDevice) {
+        clearTimeout(window.searchTimeout);
+        window.searchTimeout = setTimeout(() => performSearch(query), 300);
+    } else {
+        performSearch(query);
+    }
+});
+
+function performSearch(query) {
     const matches = itemList.filter(item =>
         item.name.toLowerCase().includes(query)
     );
@@ -171,15 +186,19 @@ searchInput.addEventListener('input', (e) => {
     }
 
     filterItems(query);
-});
+}
 
 function filterItems(query) {
     let visibleCount = 0;
+    // Disable animations on low-end devices
+    const isLowEndDevice = navigator.deviceMemory && navigator.deviceMemory <= 2;
+    const animationStyle = isLowEndDevice ? '' : 'fadeIn 0.4s ease-in';
+
     cards.forEach(card => {
         const name = card.querySelector('.anime-name').textContent.toLowerCase();
         if (name.includes(query.toLowerCase())) {
             card.style.display = '';
-            card.style.animation = 'fadeIn 0.4s ease-in';
+            card.style.animation = animationStyle;
             visibleCount++;
         } else {
             card.style.display = 'none';
@@ -326,7 +345,10 @@ function showTab(id) {
         const header = document.querySelector('header');
         const headerHeight = header ? header.offsetHeight : 0;
         const top = Math.max(0, targetEl.offsetTop - headerHeight);
-        window.scrollTo({ top, behavior: 'auto' });
+        // Disable smooth scrolling on low-end devices
+        const isLowEndDevice = navigator.deviceMemory && navigator.deviceMemory <= 2;
+        const scrollBehavior = isLowEndDevice ? 'auto' : 'auto'; // Keep auto for tab switching
+        window.scrollTo({ top, behavior: scrollBehavior });
     }
 }
 
@@ -334,6 +356,10 @@ function showTab(id) {
 document.querySelectorAll('.switch-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const target = btn.dataset.target;
+
+        // Disable smooth scrolling on low-end devices
+        const isLowEndDevice = navigator.deviceMemory && navigator.deviceMemory <= 2;
+        const scrollBehavior = isLowEndDevice ? 'auto' : 'smooth';
 
         if (target === 'Movies') {
             // Navigate to movies page in the same tab if not already there
@@ -344,7 +370,7 @@ document.querySelectorAll('.switch-btn').forEach(btn => {
             // already on movies page: show Movies section if present
             showTab('Movies');
             const el = document.getElementById('Movies');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
+            if (el) el.scrollIntoView({ behavior: scrollBehavior });
             return;
         }
 
@@ -356,7 +382,7 @@ document.querySelectorAll('.switch-btn').forEach(btn => {
             }
             showTab('Anime');
             const targetElement = document.getElementById('Anime');
-            if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
+            if (targetElement) targetElement.scrollIntoView({ behavior: scrollBehavior });
         }
     });
 });
@@ -369,6 +395,10 @@ function createLight() {
         overlay.className = 'light-overlay';
         document.body.prepend(overlay);
     }
+    // enforce a stricter cap on active lights to reduce DOM load
+    if (window.__activeLightsCount === undefined) window.__activeLightsCount = 0;
+    const maxLights = window.__maxLights || (window.matchMedia('(max-width: 768px)').matches ? 8 : 20);
+    if (window.__activeLightsCount >= maxLights) return;
 
     const light = document.createElement('div');
     light.className = 'light';
@@ -390,28 +420,37 @@ function createLight() {
     light.style.setProperty('--twinkle', twinkle);
 
     overlay.appendChild(light);
+    window.__activeLightsCount++;
 
     // Remove after the animation duration to avoid memory growth
     const removeAfter = (parseFloat(dur) + 3) * 1000;
     setTimeout(() => {
         if (light && light.parentNode) light.parentNode.removeChild(light);
+        window.__activeLightsCount = Math.max(0, window.__activeLightsCount - 1);
     }, removeAfter);
 }
 
 function startLightfall() {
     // create a small burst to begin with
-    for (let i = 0; i < 8; i++) {
-        setTimeout(createLight, i * 150);
+    for (let i = 0; i < 4; i++) {
+        setTimeout(createLight, i * 200);
     }
 
-    // then keep adding occasional lights
-    return setInterval(createLight, 350);
+    // On mobile, slow generation and cap lights
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const interval = isMobile ? 1200 : 600; // slower generation to reduce load
+    // store interval id so it could be cleared later if needed
+    window.__lightfallInterval = setInterval(createLight, interval);
+    return window.__lightfallInterval;
 }
 
 // Initialize tab on load (default to Anime)
 window.addEventListener('load', () => {
-    // Start the falling light effect
-    try { startLightfall(); } catch (err) { /* non-fatal */ }
+    // Start the falling light effect only on devices with sufficient memory (>2GB RAM)
+    const isLowEndDevice = navigator.deviceMemory && navigator.deviceMemory <= 2;
+    if (!isLowEndDevice) {
+        try { startLightfall(); } catch (err) { /* non-fatal */ }
+    }
 
     const isMoviesPage = location.pathname.endsWith('movies.html') || location.pathname.endsWith('/movies.html');
     const defaultHash = isMoviesPage ? '#Movies' : '#Anime';
