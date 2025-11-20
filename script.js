@@ -30,96 +30,61 @@ const notification = document.querySelector('.Notiflication');
 const notificationText = '🎌 Notice to All Anime Fans! 🎌 New updates are live on our anime channel! 🚀 From fresh episode reviews to fan theories and quizzes, we\'re leveling up your anime experience. Stay tuned, explore, and don\'t forget to share your favorite moments with us! 💬✨ 📅 Updated weekly | 📺 Powered by passion for anime';
 notification.innerHTML = `<span class="notice-label">Notice:- </span><span class="scroll-text start-scroll">${notificationText}</span>`;
 
-// Image click functionality (only for anime series inside #Anime)
-const animeImages = document.querySelectorAll('#Anime img');
+const animeLinks = {
+    'NARUTO': 'https://www.rareanimes.co/sony/naruto-all-season-hindi-tamil-telugu-bengali-malayalam-episodes-download-hd/',
+    'DEMON SLAYER': 'https://www.rareanimes.co/anime/demon-slayer-season-1-episodes-hindi-dubbed-download-hd-jio-cinema/',
+    'ATTACK ON TITAN': 'https://www.rareanimes.co/anime/attack-on-titan-season-1-hindi-dubbed-episodes-download-hd/',
+    'JUJUTSU KAISEN': 'https://www.rareanimes.co/crunchyroll/jujutsu-kaisen-season-1-hindi-dubbed-episodes-download-fhd/',
+    'SOLO LEVELING': 'https://www.rareanimes.co/anime/solo-leveling-season-1-hindi-dubbed-episodes-download-hd/',
+    'DRAGON BALL': 'https://www.rareanimes.co/anime/dragon-ball-1986-hindi-dubbed-episodes-download-hd/',
+    'DORAEMON': 'https://www.rareanimes.co/hindi-dub/doraemon-all-seasons-hindi-episodes-download-hd/',
+    'POKEMON': 'https://www.rareanimes.co/hindi-dub/pokemon-all-series-seasons-hindi-tamil-telugu-download-360p-480p-720p-hd-1080p-fhd/',
+    'ALYA': 'https://www.rareanimes.co/anime/alya-sometimes-hides-her-feelings-in-russian-season-1-hindi-dubbed-episodes-download-hd/',
+    'GETTING MARRIED': 'https://www.rareanimes.co/anime/im-getting-married-to-a-girl-i-hate-in-my-class-season-1-hindi-dubbed-episodes-download-hd/',
+    'CLASSROOM OF THE ELITE': 'https://www.rareanimes.co/anime/classroom-of-the-elite-season-1-hindi-dubbed-episodes-download-hd/',
+    'RENT-A-GIRLFRIEND': 'https://www.rareanimes.co/anime/rent-a-girlfriend-season-1-episodes-hindi-dubbed-download-hd/',
+    'COUPLE OF CUCKOOS': 'https://www.rareanimes.co/anime/a-couple-of-cuckoos-season-1-episodes-hindi-dubbed-download-hd/',
+    'SHIUNJI FAMILY': 'https://www.rareanimes.co/anime/the-shiunji-family-children-season-1-hindi-dubbed-episodes-download-hd/',
+    'DETECTIVE IS ALREADY DEAD': 'https://www.rareanimes.co/crunchyroll/the-detective-is-already-dead-season-1-hindi-dubbed-episodes-download-hd/',
+    'DRESS-UP DARLING': 'https://www.rareanimes.co/anime/my-dress-up-darling-season-1-episodes-hindi-dubbed-download-hd/',
+    'APOTHECARY DIARIES': 'https://www.rareanimes.co/anime/the-apothecary-diaries-season-1-hindi-episodes-download/'
+};
 
-animeImages.forEach(img => {
+document.querySelectorAll('#Anime img').forEach(img => {
     img.addEventListener('click', (e) => {
         const card = img.closest('.anime-card');
         const animeName = card.querySelector('.anime-name').textContent;
         
-        if (animeName.includes('NARUTO')) {
-            e.stopPropagation();
-            window.open('https://www.rareanimes.co/sony/naruto-all-season-hindi-tamil-telugu-bengali-malayalam-episodes-download-hd/', '_blank');
-        } else if (animeName.includes('DEMON SLAYER')) {
-            e.stopPropagation();
-            window.open('https://www.rareanimes.co/anime/demon-slayer-season-1-episodes-hindi-dubbed-download-hd-jio-cinema/', '_blank');
-        } else if (animeName.includes('ATTACK ON TITAN')) {
-            e.stopPropagation();
-            window.open('https://www.rareanimes.co/anime/attack-on-titan-season-1-hindi-dubbed-episodes-download-hd/', '_blank');
-        } else if (animeName.includes('JUJUTSU KAISEN')) {
-            e.stopPropagation();
-            window.open('https://www.rareanimes.co/crunchyroll/jujutsu-kaisen-season-1-hindi-dubbed-episodes-download-fhd/', '_blank');
-        } else if (animeName.includes('SOLO LEVELING')) {
-            e.stopPropagation();
-            window.open('https://www.rareanimes.co/anime/solo-leveling-season-1-hindi-dubbed-episodes-download-hd/', '_blank');
-        } else if (animeName.includes('DRAGON BALL')) {
-            e.stopPropagation();
-            window.open('https://www.rareanimes.co/anime/dragon-ball-1986-hindi-dubbed-episodes-download-hd/', '_blank');
-        } else if (animeName.includes('DORAEMON')) {
-            e.stopPropagation();
-            window.open('https://www.rareanimes.co/hindi-dub/doraemon-all-seasons-hindi-episodes-download-hd/', '_blank');
-        } else if (animeName.includes('POKEMON')) {
-            e.stopPropagation();
-            window.open('https://www.rareanimes.co/hindi-dub/pokemon-all-series-seasons-hindi-tamil-telugu-download-360p-480p-720p-hd-1080p-fhd/', '_blank');
-        } else if (animeName.includes('ALYA')) {
-            e.stopPropagation();
-            window.open('https://www.rareanimes.co/anime/alya-sometimes-hides-her-feelings-in-russian-season-1-hindi-dubbed-episodes-download-hd/', '_blank');
-        } else if (animeName.includes('GETTING MARRIED')) {
-            e.stopPropagation();
-            window.open('https://www.rareanimes.co/anime/im-getting-married-to-a-girl-i-hate-in-my-class-season-1-hindi-dubbed-episodes-download-hd/', '_blank');
-        } else if (animeName.includes('CLASSROOM OF THE ELITE')) {
-            e.stopPropagation();
-            window.open('https://www.rareanimes.co/anime/classroom-of-the-elite-season-1-hindi-dubbed-episodes-download-hd/', '_blank');
-        } else if (animeName.includes('RENT-A-GIRLFRIEND')) {
-            e.stopPropagation();
-            window.open('https://www.rareanimes.co/anime/rent-a-girlfriend-season-1-episodes-hindi-dubbed-download-hd/', '_blank');
-        } else if (animeName.includes('COUPLE OF CUCKOOS')) {
-            e.stopPropagation();
-            window.open('https://www.rareanimes.co/anime/a-couple-of-cuckoos-season-1-episodes-hindi-dubbed-download-hd/', '_blank');
-        } else if (animeName.includes('SHIUNJI FAMILY')) {
-            e.stopPropagation();
-            window.open('https://www.rareanimes.co/anime/the-shiunji-family-children-season-1-hindi-dubbed-episodes-download-hd/', '_blank');
-        } else if (animeName.includes('DETECTIVE IS ALREADY DEAD')) {
-            e.stopPropagation();
-            window.open('https://www.rareanimes.co/crunchyroll/the-detective-is-already-dead-season-1-hindi-dubbed-episodes-download-hd/', '_blank');
-        } else if (animeName.includes('DRESS-UP DARLING')) {
-            e.stopPropagation();
-            window.open('https://www.rareanimes.co/anime/my-dress-up-darling-season-1-episodes-hindi-dubbed-download-hd/', '_blank');
-        } else if (animeName.includes('APOTHECARY DIARIES')) {
-            e.stopPropagation();
-            window.open('https://www.rareanimes.co/anime/the-apothecary-diaries-season-1-hindi-episodes-download/', '_blank');
-        } else if (img.src) {
-            window.open(img.src, '_blank');
+        for (const [key, url] of Object.entries(animeLinks)) {
+            if (animeName.includes(key)) {
+                e.stopPropagation();
+                window.open(url, '_blank');
+                return;
+            }
         }
+        if (img.src) window.open(img.src, '_blank');
     });
 });
 
-// Smooth scrolling for navigation links (and keep tab in sync)
-// Only intercept links that are in-page hash links (href starts with '#').
 document.querySelectorAll('nav a').forEach(link => {
     const href = link.getAttribute('href') || '';
-    if (!href.startsWith('#')) return; // don't hijack normal page links
+    if (!href.startsWith('#')) return;
 
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = href.substring(1);
-
-        // Disable smooth scrolling on low-end devices
-        const isLowEndDevice = navigator.deviceMemory && navigator.deviceMemory <= 2;
-        const scrollBehavior = isLowEndDevice ? 'auto' : 'smooth';
 
         if (targetId === 'home') {
             searchInput.value = '';
             document.querySelectorAll('#Anime .anime-card').forEach(card => card.style.display = '');
             noResults.classList.remove('show');
             suggestionsBox.classList.remove('show');
-            window.scrollTo({ top: 0, behavior: scrollBehavior });
+            window.scrollTo({ top: 0, behavior: 'auto' });
             showTab('Anime');
         } else {
             const targetElement = document.getElementById(targetId);
             if (targetElement) {
-                targetElement.scrollIntoView({ behavior: scrollBehavior });
+                targetElement.scrollIntoView({ behavior: 'auto' });
             }
             showTab(targetId);
         }
@@ -151,14 +116,8 @@ searchInput.addEventListener('input', (e) => {
         return;
     }
 
-    // Debounce search for low-end devices
-    const isLowEndDevice = navigator.deviceMemory && navigator.deviceMemory <= 2;
-    if (isLowEndDevice) {
-        clearTimeout(window.searchTimeout);
-        window.searchTimeout = setTimeout(() => performSearch(query), 300);
-    } else {
-        performSearch(query);
-    }
+    clearTimeout(window.searchTimeout);
+    window.searchTimeout = setTimeout(() => performSearch(query), 200);
 });
 
 function performSearch(query) {
@@ -190,15 +149,11 @@ function performSearch(query) {
 
 function filterItems(query) {
     let visibleCount = 0;
-    // Disable animations on low-end devices
-    const isLowEndDevice = navigator.deviceMemory && navigator.deviceMemory <= 2;
-    const animationStyle = isLowEndDevice ? '' : 'fadeIn 0.4s ease-in';
 
     cards.forEach(card => {
         const name = card.querySelector('.anime-name').textContent.toLowerCase();
         if (name.includes(query.toLowerCase())) {
             card.style.display = '';
-            card.style.animation = animationStyle;
             visibleCount++;
         } else {
             card.style.display = 'none';
@@ -218,111 +173,43 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Card click functionality (only for anime series inside #Anime, or movies if on movies page)
 if (!isMoviesPage) {
     cards.forEach(card => {
-        // Skip cards that are already links
-        if (card.tagName === 'A') {
-            return;
-        }
+        if (card.tagName === 'A') return;
 
         const animeName = card.querySelector('.anime-name').textContent;
-
-        if (animeName.includes('NARUTO')) {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-                window.open('https://www.rareanimes.co/sony/naruto-all-season-hindi-tamil-telugu-bengali-malayalam-episodes-download-hd/', '_blank');
-            });
-        } else if (animeName.includes('DEMON SLAYER')) {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-                window.open('https://www.rareanimes.co/anime/demon-slayer-season-1-episodes-hindi-dubbed-download-hd-jio-cinema/', '_blank');
-            });
-        } else if (animeName.includes('ATTACK ON TITAN')) {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-                window.open('https://www.rareanimes.co/anime/attack-on-titan-season-1-hindi-dubbed-episodes-download-hd/', '_blank');
-            });
-        } else if (animeName.includes('JUJUTSU KAISEN')) {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-                window.open('https://www.rareanimes.co/crunchyroll/jujutsu-kaisen-season-1-hindi-dubbed-episodes-download-fhd/', '_blank');
-            });
-        } else if (animeName.includes('SOLO LEVELING')) {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-                window.open('https://www.rareanimes.co/anime/solo-leveling-season-1-hindi-dubbed-episodes-download-hd/', '_blank');
-            });
-        } else if (animeName.includes('DRAGON BALL')) {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-                window.open('https://www.rareanimes.co/anime/dragon-ball-1986-hindi-dubbed-episodes-download-hd/', '_blank');
-            });
-        } else if (animeName.includes('DORAEMON')) {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-                window.open('https://www.rareanimes.co/hindi-dub/doraemon-all-seasons-hindi-episodes-download-hd/', '_blank');
-            });
-        } else if (animeName.includes('POKEMON')) {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-                window.open('https://www.rareanimes.co/hindi-dub/pokemon-all-series-seasons-hindi-tamil-telugu-download-360p-480p-720p-hd-1080p-fhd/', '_blank');
-            });
-        } else if (animeName.includes('ALYA')) {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-                window.open('https://www.rareanimes.co/anime/alya-sometimes-hides-her-feelings-in-russian-season-1-hindi-dubbed-episodes-download-hd/', '_blank');
-            });
-        } else if (animeName.includes('GETTING MARRIED')) {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-                window.open('https://www.rareanimes.co/anime/im-getting-married-to-a-girl-i-hate-in-my-class-season-1-hindi-dubbed-episodes-download-hd/', '_blank');
-            });
-        } else if (animeName.includes('CLASSROOM OF THE ELITE')) {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-                window.open('https://www.rareanimes.co/anime/classroom-of-the-elite-season-1-hindi-dubbed-episodes-download-hd/', '_blank');
-            });
-        } else if (animeName.includes('RENT-A-GIRLFRIEND')) {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-                window.open('https://www.rareanimes.co/anime/rent-a-girlfriend-season-1-episodes-hindi-dubbed-download-hd/', '_blank');
-            });
-        } else if (animeName.includes('COUPLE OF CUCKOOS')) {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-                window.open('https://www.rareanimes.co/anime/a-couple-of-cuckoos-season-1-episodes-hindi-dubbed-download-hd/', '_blank');
-            });
-        } else if (animeName.includes('SHIUNJI FAMILY')) {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-                window.open('https://www.rareanimes.co/anime/the-shiunji-family-children-season-1-hindi-dubbed-episodes-download-hd/', '_blank');
-            });
-        } else if (animeName.includes('DETECTIVE IS ALREADY DEAD')) {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-                window.open('https://www.rareanimes.co/crunchyroll/the-detective-is-already-dead-season-1-hindi-dubbed-episodes-download-hd/', '_blank');
-            });
-        } else if (animeName.includes('DRESS-UP DARLING')) {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-                window.open('https://www.rareanimes.co/anime/my-dress-up-darling-season-1-episodes-hindi-dubbed-download-hd/', '_blank');
-            });
-        } else if (animeName.includes('APOTHECARY DIARIES')) {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-                window.open('https://www.rareanimes.co/anime/the-apothecary-diaries-season-1-hindi-episodes-download/', '_blank');
-            });
+        
+        for (const [key, url] of Object.entries(animeLinks)) {
+            if (animeName.includes(key)) {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', () => window.open(url, '_blank'));
+                break;
+            }
         }
     });
 }
 
-// Tab switching logic (buttons added in header)
+// Tab switching logic with smooth fade animation
 function showTab(id) {
-    document.querySelectorAll('main section').forEach(section => {
-        if (!section.id) return; // skip sections without id
-        section.style.display = section.id === id ? '' : 'none';
+    const sections = document.querySelectorAll('main section');
+    const targetSection = document.getElementById(id);
+    
+    sections.forEach(section => {
+        if (!section.id || section === targetSection) return;
+        if (section.style.display !== 'none') {
+            section.classList.add('fade-out');
+            setTimeout(() => {
+                section.style.display = 'none';
+                section.classList.remove('fade-out');
+            }, 300);
+        }
     });
+
+    if (targetSection) {
+        targetSection.style.display = '';
+        targetSection.classList.add('fade-out');
+        setTimeout(() => targetSection.classList.remove('fade-out'), 10);
+    }
 
     // update merged switch buttons active state
     document.querySelectorAll('.switch-btn').forEach(btn => {
@@ -338,121 +225,86 @@ function showTab(id) {
         location.hash = '#' + id;
     }
 
-    // If switching to the Anime tab, make sure the page jumps to the top
-    // of the Anime section (so the list starts from the beginning).
-    const targetEl = document.getElementById(id);
-    if (targetEl && id === 'Anime') {
-        const header = document.querySelector('header');
-        const headerHeight = header ? header.offsetHeight : 0;
-        const top = Math.max(0, targetEl.offsetTop - headerHeight);
-        // Disable smooth scrolling on low-end devices
-        const isLowEndDevice = navigator.deviceMemory && navigator.deviceMemory <= 2;
-        const scrollBehavior = isLowEndDevice ? 'auto' : 'auto'; // Keep auto for tab switching
-        window.scrollTo({ top, behavior: scrollBehavior });
-    }
+
 }
 
-// Wire up tab buttons
 document.querySelectorAll('.switch-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const target = btn.dataset.target;
 
-        // Disable smooth scrolling on low-end devices
-        const isLowEndDevice = navigator.deviceMemory && navigator.deviceMemory <= 2;
-        const scrollBehavior = isLowEndDevice ? 'auto' : 'smooth';
-
         if (target === 'Movies') {
-            // Navigate to movies page in the same tab if not already there
             if (!location.pathname.endsWith('movies.html')) {
                 window.location.href = 'movies.html';
                 return;
             }
-            // already on movies page: show Movies section if present
             showTab('Movies');
-            const el = document.getElementById('Movies');
-            if (el) el.scrollIntoView({ behavior: scrollBehavior });
+            window.scrollTo({ top: 0, behavior: 'auto' });
             return;
         }
 
         if (target === 'Anime') {
-            // If we're on the movies page, go back to the main index
             if (location.pathname.endsWith('movies.html')) {
                 window.location.href = 'index.html';
                 return;
             }
             showTab('Anime');
-            const targetElement = document.getElementById('Anime');
-            if (targetElement) targetElement.scrollIntoView({ behavior: scrollBehavior });
+            window.scrollTo({ top: 0, behavior: 'auto' });
         }
     });
 });
 
-// White light fall effect with JS-generated elements inside .light-overlay
+// White light fall effect - optimized for performance
 function createLight() {
-    let overlay = document.querySelector('.light-overlay');
-    if (!overlay) {
-        overlay = document.createElement('div');
-        overlay.className = 'light-overlay';
-        document.body.prepend(overlay);
-    }
-    // enforce a stricter cap on active lights to reduce DOM load
+    const overlay = document.querySelector('.light-overlay');
+    if (!overlay) return;
+    
     if (window.__activeLightsCount === undefined) window.__activeLightsCount = 0;
-    const maxLights = window.__maxLights || (window.matchMedia('(max-width: 768px)').matches ? 8 : 20);
+    const maxLights = 12;
     if (window.__activeLightsCount >= maxLights) return;
 
     const light = document.createElement('div');
     light.className = 'light';
 
-    // Randomize visual properties via CSS variables
-    const left = (Math.random() * 100).toFixed(2) + 'vw';
-    // tiny star sizes (1 - 4px) but intense glow
-    const size = (Math.random() * 3 + 1).toFixed(1) + 'px'; // 1 - 4px
-    const dur = (Math.random() * 8 + 14).toFixed(2) + 's'; // 14 - 22s slower fall
-    const delay = (Math.random() * 1.2).toFixed(2) + 's';
-    const opacity = (Math.random() * 0.15 + 0.9).toFixed(2); // 0.9 - 1.05
-    const twinkle = (Math.random() * 1.8 + 0.6).toFixed(2) + 's'; // 0.6 - 2.4s
+    const left = (Math.random() * 100).toFixed(0) + 'vw';
+    const size = '3px';
+    const dur = (Math.random() * 6 + 16).toFixed(0) + 's';
+    const delay = (Math.random() * 1).toFixed(1) + 's';
+    const opacity = '1';
 
     light.style.setProperty('--left', left);
     light.style.setProperty('--size', size);
     light.style.setProperty('--dur', dur);
     light.style.setProperty('--delay', delay);
     light.style.setProperty('--opacity', opacity);
-    light.style.setProperty('--twinkle', twinkle);
 
     overlay.appendChild(light);
     window.__activeLightsCount++;
 
-    // Remove after the animation duration to avoid memory growth
-    const removeAfter = (parseFloat(dur) + 3) * 1000;
     setTimeout(() => {
         if (light && light.parentNode) light.parentNode.removeChild(light);
-        window.__activeLightsCount = Math.max(0, window.__activeLightsCount - 1);
-    }, removeAfter);
+        window.__activeLightsCount--;
+    }, (parseFloat(dur) + 2) * 1000);
 }
 
 function startLightfall() {
-    // create a small burst to begin with
-    for (let i = 0; i < 4; i++) {
-        setTimeout(createLight, i * 200);
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile) return;
+    
+    const isLowEndDevice = navigator.deviceMemory && navigator.deviceMemory <= 4;
+    if (isLowEndDevice) return;
+
+    for (let i = 0; i < 3; i++) {
+        setTimeout(createLight, i * 300);
     }
 
-    // On mobile, slow generation and cap lights
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    const interval = isMobile ? 1200 : 600; // slower generation to reduce load
-    // store interval id so it could be cleared later if needed
-    window.__lightfallInterval = setInterval(createLight, interval);
-    return window.__lightfallInterval;
+    window.__lightfallInterval = setInterval(createLight, 1500);
 }
 
-// Initialize tab on load (default to Anime)
+// Initialize tab on load
 window.addEventListener('load', () => {
-    // Start the falling light effect only on devices with sufficient memory (>2GB RAM)
-    const isLowEndDevice = navigator.deviceMemory && navigator.deviceMemory <= 2;
-    if (!isLowEndDevice) {
-        try { startLightfall(); } catch (err) { /* non-fatal */ }
-    }
+    try { startLightfall(); } catch (err) {}
 
-    const isMoviesPage = location.pathname.endsWith('movies.html') || location.pathname.endsWith('/movies.html');
+    const isMoviesPage = location.pathname.endsWith('movies.html');
     const defaultHash = isMoviesPage ? '#Movies' : '#Anime';
     const hash = (location.hash || defaultHash).replace('#', '');
     if (document.getElementById(hash)) showTab(hash);
