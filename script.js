@@ -91,6 +91,31 @@ document.querySelectorAll('nav a').forEach(link => {
     });
 });
 
+document.querySelectorAll('.switch-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const target = btn.dataset.target;
+
+        if (target === 'Movies') {
+            if (!location.pathname.endsWith('movies.html')) {
+                window.location.href = 'movies.html';
+                return;
+            }
+            showTab('Movies');
+            window.scrollTo({ top: 0, behavior: 'auto' });
+            return;
+        }
+
+        if (target === 'Anime') {
+            if (location.pathname.endsWith('movies.html')) {
+                window.location.href = 'index.html';
+                return;
+            }
+            showTab('Anime');
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+    });
+});
+
 // Get elements
 const searchInput = document.getElementById('search-input');
 const suggestionsBox = document.getElementById('suggestions');
@@ -211,7 +236,6 @@ function showTab(id) {
         setTimeout(() => targetSection.classList.remove('fade-out'), 10);
     }
 
-    // update merged switch buttons active state
     document.querySelectorAll('.switch-btn').forEach(btn => {
         const isActive = btn.dataset.target === id;
         btn.classList.toggle('active', isActive);
@@ -228,30 +252,7 @@ function showTab(id) {
 
 }
 
-document.querySelectorAll('.switch-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const target = btn.dataset.target;
 
-        if (target === 'Movies') {
-            if (!location.pathname.endsWith('movies.html')) {
-                window.location.href = 'movies.html';
-                return;
-            }
-            showTab('Movies');
-            window.scrollTo({ top: 0, behavior: 'auto' });
-            return;
-        }
-
-        if (target === 'Anime') {
-            if (location.pathname.endsWith('movies.html')) {
-                window.location.href = 'index.html';
-                return;
-            }
-            showTab('Anime');
-            window.scrollTo({ top: 0, behavior: 'auto' });
-        }
-    });
-});
 
 // White light fall effect - optimized for performance
 function createLight() {
